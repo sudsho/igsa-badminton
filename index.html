@@ -568,7 +568,7 @@ footer p{margin:0 0 6px}
         <div><dt>Dates</dt><dd>Fri 25 &amp; Sun 27 Sept</dd></div>
         <div><dt>Play</dt><dd>5:00 to 9:00 PM</dd></div>
         <div><dt>Venue</dt><dd>SRC Courts, UofL</dd></div>
-        <div><dt>Entry</dt><dd>$8 singles &middot; $12 team</dd></div>
+        <div><dt>Entry</dt><dd>$8 per player</dd></div>
       </dl>
       <div class="countdown" id="countdown">
         <strong id="cdVal">&mdash;</strong>
@@ -684,7 +684,7 @@ footer p{margin:0 0 6px}
             <span class="err">Select at least one event.</span>
           </div>
           <p class="hint" id="capNote" hidden style="color:var(--warn);font-weight:500">That is your two events. With three courts on Friday we cap entries at two per player so the schedule works. Untick one to swap.</p>
-          <p class="hint">Maximum two events per player. Fees add up across events: singles is $8 per player, and each doubles event is $12 for the whole team, paid by whoever registers.</p>
+          <p class="hint">Every player pays $8 per event, singles or doubles. A doubles entry is $16 because it covers both of you, and whoever registers pays it. Maximum two events per player.</p>
         </div>
       </section>
 
@@ -821,7 +821,7 @@ document.getElementById("zelleQr").src = ZELLE_QR;
 })();
 
 const DEADLINE = new Date(2026, 8, 18, 17, 0, 0); // 18 Sept 2026, 5:00 PM
-const FEE = { singles: 8, doubles: 12 };
+const FEE = { singles: 8, doubles: 16 };   // $8 a head either way
 const MAX_EVENTS = 2;   // three courts on Friday will not schedule more than this
 
 const EVENTS = [
@@ -875,7 +875,7 @@ function renderEvents(){
       '<input type="checkbox" value="' + e.id + '"' + (chosen.has(e.id) ? " checked" : "") + '>' +
       '<span class="name">' + e.name +
         '<span class="meta">' + (e.type === "singles" ? "Individual entry" : "You and one partner") + '</span></span>' +
-      '<span class="price">' + money(price) + '<small>' + (e.type === "singles" ? "per player" : "per team") + '</small></span>';
+      '<span class="price">' + money(price) + '<small>' + (e.type === "singles" ? "per player" : "team, $8 each") + '</small></span>';
     list.appendChild(l);
   });
   if (!$("input[name=gender]:checked")){
@@ -955,7 +955,7 @@ function computeFees(){
   return EVENTS.filter(e => ids.includes(e.id)).map(e => ({
     id: e.id, name: e.name,
     amount: e.type === "singles" ? FEE.singles : FEE.doubles,
-    unit: e.type === "singles" ? "1 player" : "2 players"
+    unit: e.type === "singles" ? "1 player" : "2 players at $8 each"
   }));
 }
 
