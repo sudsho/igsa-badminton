@@ -572,7 +572,7 @@ footer p{margin:0 0 6px}
       </dl>
       <div class="countdown" id="countdown">
         <strong id="cdVal">&mdash;</strong>
-        <span id="cdLbl">until entries close, Tuesday 29 September at 5:00 PM</span>
+        <span id="cdLbl">until entries close, Tuesday 22 September at 5:00 PM</span>
       </div>
     </div>
   </header>
@@ -582,7 +582,7 @@ footer p{margin:0 0 6px}
     <section class="stage" id="closedPanel" hidden style="margin-top:30px">
       <div class="stage-head"><span class="stage-num" style="background:#C8102E">!</span><h2>Entries Closed</h2></div>
       <div class="stage-body">
-        <p style="margin:0;font-size:15px;color:var(--ink-2)">Registration closed on Tuesday 29 September at 5:00 PM and late entries cannot be accepted, because the draw is made straight after the deadline.</p>
+        <p style="margin:0;font-size:15px;color:var(--ink-2)">Registration closed on Tuesday 22 September at 5:00 PM and late entries cannot be accepted, because the draw is made straight after the deadline.</p>
         <p style="margin:0;font-size:15px;color:var(--ink-2)">If you think you registered and have not had your fixture, email <a href="mailto:igsa.uofl@gmail.com" style="color:var(--accent);font-weight:600;text-decoration:none">igsa.uofl@gmail.com</a> or call Junead on <a href="tel:+15028761596" style="color:var(--accent);font-weight:600;text-decoration:none">+1 (502) 876&#8209;1596</a>.</p>
       </div>
     </section>
@@ -779,7 +779,7 @@ footer p{margin:0 0 6px}
     <div class="rb">
       <ol class="steps">
         <li><b>Your payment is recorded</b> against this reference. We reconcile every Zelle confirmation number before the draw is published.</li>
-        <li><b>Watch your email</b> for the draw, your court, and your match times. These go out after entries close on 29 September.</li>
+        <li><b>Watch your email</b> for the draw, your court, and your match times. These go out after entries close on 22 September.</li>
         <li><b>Arrive 30 minutes early</b> on your match day for check-in and warm-up.</li>
         <li id="stepGuest" hidden><b>Bring $20 for the SRC guest pass</b> on each day you play, paid at the front desk.</li>
       </ol>
@@ -820,7 +820,7 @@ document.getElementById("zelleQr").src = ZELLE_QR;
   document.querySelector(".eyebrow").hidden = true;
 })();
 
-const DEADLINE = new Date("2026-09-29T17:00:00-04:00"); // Tue 29 Sept 2026, 5:00 PM Eastern, pinned so every visitor sees the same cutoff
+const DEADLINE = new Date("2026-09-22T17:00:00-04:00"); // Tue 22 Sept 2026, 5:00 PM Eastern, pinned so every visitor sees the same cutoff
 const FEE = { singles: 8, doubles: 16 };   // $8 a head either way
 const MAX_EVENTS = 2;   // three courts on Friday will not schedule more than this
 
@@ -843,14 +843,14 @@ function tickCountdown(){
   if (ms <= 0){
     el.classList.add("closed");
     val.textContent = "Closed";
-    lbl.textContent = "entries closed on Tuesday 29 September at 5:00 PM";
+    lbl.textContent = "entries closed on Tuesday 22 September at 5:00 PM";
     return;
   }
   const d = Math.floor(ms / 86400000);
   const h = Math.floor(ms % 86400000 / 3600000);
   const m = Math.floor(ms % 3600000 / 60000);
   val.textContent = d > 0 ? d + "d " + h + "h" : h + "h " + m + "m";
-  lbl.textContent = "until entries close, Tuesday 29 September at 5:00 PM";
+  lbl.textContent = "until entries close, Tuesday 22 September at 5:00 PM";
 }
 tickCountdown();
 setInterval(tickCountdown, 60000);
@@ -1175,7 +1175,7 @@ $("#reg").addEventListener("submit", async e => {
   } catch (err) {
     box.classList.add("on");
     box.textContent = /closed/i.test(String(err && err.message))
-      ? "Entries closed on 29 September at 5:00 PM, so this could not be saved."
+      ? "Entries closed on 22 September at 5:00 PM, so this could not be saved."
       : "We could not save your entry. Check your connection and try again. If it keeps failing, email igsa.uofl@gmail.com and we will add you by hand.";
     btn.disabled = false;
     btn.textContent = "Enter Draw";
